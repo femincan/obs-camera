@@ -1,4 +1,4 @@
-import { generateWebSocket } from '../lib/utils';
+import { generateScript } from '../lib/utils';
 import viewScript from '../scripts/view' with { type: 'text' };
 
 export function View({ ip, port }: { ip: string; port: number }) {
@@ -7,7 +7,7 @@ export function View({ ip, port }: { ip: string; port: number }) {
       <video autoplay playsinline muted></video>
       <script
         dangerouslySetInnerHTML={{
-          __html: `${generateWebSocket(ip, port)}${viewScript}`,
+          __html: generateScript(viewScript as string, ip, port),
         }}
       ></script>
     </>

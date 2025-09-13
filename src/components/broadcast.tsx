@@ -1,4 +1,4 @@
-import { generateWebSocket } from '../lib/utils';
+import { generateScript } from '../lib/utils';
 import broadcastScript from '../scripts/broadcast' with { type: 'text' };
 
 export function Broadcast({ ip, port }: { ip: string; port: number }) {
@@ -6,7 +6,7 @@ export function Broadcast({ ip, port }: { ip: string; port: number }) {
     <>
       <script
         dangerouslySetInnerHTML={{
-          __html: `${generateWebSocket(ip, port)}${broadcastScript}`,
+          __html: generateScript(broadcastScript as string, ip, port),
         }}
       ></script>
     </>
