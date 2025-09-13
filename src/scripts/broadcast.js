@@ -1,5 +1,13 @@
 const pc = new RTCPeerConnection();
 
+document.body.addEventListener('dblclick', async () => {
+  if (!document.fullscreenElement) {
+    await document.body.requestFullscreen();
+  } else {
+    await document.exitFullscreen();
+  }
+});
+
 ws.addEventListener('open', async () => {
   const stream = await getUserMedia();
 
