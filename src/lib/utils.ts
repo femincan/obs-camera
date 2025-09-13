@@ -16,5 +16,5 @@ export function getLocalIP() {
 }
 
 export function generateWebSocket(ip: string, port: number) {
-  return `const ws = new WebSocket('wss://${ip}:${port}');`;
+  return `const ws = new WebSocket('wss://${ip}:${port}');\n`;
 }
