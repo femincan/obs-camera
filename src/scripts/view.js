@@ -11,7 +11,6 @@ ws.addEventListener('open', () => {
   });
 
   pc.addEventListener('icecandidate', (e) => {
-    console.log(e.candidate);
     if (e.candidate) {
       ws.send(JSON.stringify({ type: 'candidate', candidate: e.candidate }));
     }
