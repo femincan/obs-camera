@@ -1,10 +1,15 @@
 const pc = new RTCPeerConnection();
 
+let wakeLock;
 document.body.addEventListener('dblclick', async () => {
   if (!document.fullscreenElement) {
     await document.body.requestFullscreen();
+    wakeLock = await navigator.wakeLock.request();
   } else {
     await document.exitFullscreen();
+    if (!wakeLock.released) {
+      await wakeLock.release();
+    }
   }
 });
 
