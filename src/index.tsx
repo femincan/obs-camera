@@ -3,6 +3,8 @@ import { websocket, upgradeWebSocket } from 'hono/bun';
 import type { WSContext } from 'hono/ws';
 import { jsxRenderer } from 'hono/jsx-renderer';
 import * as z from 'zod';
+import certFileContent from '../cert/cert.pem' with { type: 'text' };
+import keyFileContent from '../cert/key.pem' with { type: 'text' };
 import { getLocalIP } from './lib/utils';
 import { DefaultLayout, Broadcast, View } from './components';
 
@@ -131,14 +133,13 @@ app.get('/view', (c) => {
   return c.render(<View ip={ip} port={port} />);
 });
 
-const CERT_DIR_PATH = `${import.meta.dir}/../cert`;
 const server = Bun.serve({
   fetch: app.fetch,
   port: PORT,
   hostname: HOSTNAME,
   tls: {
-    cert: Bun.file(`${CERT_DIR_PATH}/cert.pem`),
-    key: Bun.file(`${CERT_DIR_PATH}/key.pem`),
+    cert: certFileContent,
+    key: keyFileContent,
   },
   websocket,
 });
