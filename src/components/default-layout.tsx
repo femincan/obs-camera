@@ -1,5 +1,6 @@
 import type { PropsWithChildren } from 'hono/jsx';
 import { css, Style } from 'hono/css';
+import faviconEncoded from '../assets/favicon-encoded';
 
 export function DefaultLayout({ children }: PropsWithChildren) {
   return (
@@ -7,6 +8,11 @@ export function DefaultLayout({ children }: PropsWithChildren) {
       <head>
         <meta charSet='UTF-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <link
+          rel='shortcut icon'
+          type='image/svg+xml'
+          href={`data:image/svg+xml,${faviconEncoded}`}
+        />
         <title>OBS Camera</title>
         <Style>
           {css`
