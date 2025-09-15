@@ -24,6 +24,8 @@ export function DefaultLayout({ children }: PropsWithChildren) {
             body {
               height: 100vh;
               width: 100vw;
+              max-width: 100%;
+              max-height: 100vh;
             }
             body {
               background-color: black;
