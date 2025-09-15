@@ -6,7 +6,7 @@ export function Broadcast({ ip, port }: { ip: string; port: number }) {
     <>
       <script
         dangerouslySetInnerHTML={{
-          __html: generateScript(broadcastScript as string, ip, port),
+          __html: generateScript([broadcastScript], ip, port),
         }}
       ></script>
     </>

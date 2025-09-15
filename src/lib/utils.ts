@@ -19,6 +19,14 @@ export function generateWebSocket(ip: string, port: number) {
   return `const ws = new WebSocket('wss://${ip}:${port}');\n`;
 }
 
-export function generateScript(script: string, ip: string, port: number) {
-  return `${generateWebSocket(ip, port)}${script}`;
+// I use `unknown` as the script type because TypeScript doesn't know
+// the types (string) of import attribute `{type: 'text'}`.
+// We can add manual check later to make sure the input scripts types are `script`
+export function generateScript(scripts: unknown[], ip: string, port: number) {
+  let result = generateWebSocket(ip, port);
+  for (const script of scripts) {
+    result += script;
+  }
+
+  return result;
 }
