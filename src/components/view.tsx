@@ -26,6 +26,7 @@ export function View({ ip, port }: { ip: string; port: number }) {
         <video autoplay playsinline muted></video>
       </div>
       <script
+        type='module'
         dangerouslySetInnerHTML={{
           __html: generateScript([viewScript], ip, port),
         }}
